@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
 using ShadowSET.ObjectClassesShadow;
+
 namespace ShadowSET
 {
 	static class Layout
