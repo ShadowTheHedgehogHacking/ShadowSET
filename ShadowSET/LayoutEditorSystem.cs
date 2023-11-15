@@ -19,7 +19,10 @@ namespace ShadowSET
 		public static ObjectEntry shadowObjectEntry(byte List, byte Type) => shadowObjectEntries[(List, Type)];
 		
 		public static void SetupLayoutEditorSystem(){
-			var resourcePath = "Resources/ShadowObjectList.ini";
+			// embed as INI? make end user pass as constructor?
+			//var entryPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+			//var resourcePath = Path.Combine(entryPath, "Resources/ShadowObjectList.ini");
+			var resourcePath = "Scripts/ShadowSET/ShadowSET/Resources/ShadowObjectList.ini";
 			shadowObjectEntries = ReadObjectListData(resourcePath);
 		}
 

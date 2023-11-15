@@ -10,7 +10,7 @@ namespace ShadowSET
 	{
 		public static List<SetObjectShadow> GetShadowLayout(string fileName)
 		{
-			if (LayoutEditorSystem.shadowObjectEntries.Count == 0)
+			if (LayoutEditorSystem.shadowObjectEntries == null)
 			{
 				LayoutEditorSystem.SetupLayoutEditorSystem();
 			}
