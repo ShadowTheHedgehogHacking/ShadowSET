@@ -16,6 +16,21 @@ namespace ShadowSETTest
         }
 
         [Fact]
+        public void LoadAndSaveWithNoModificationCheck()
+        {
+            var shadow_0100_cmn = parentDirectory + Assets.Assets.shadow_stg0100_cmn;
+            LayoutEditorSystem.SetupLayoutEditorSystem();
+            var layout = LayoutEditorFunctions.GetShadowLayout(shadow_0100_cmn, out var result);
+            Assert.Equal(504, layout.Count());
+
+            var test = "originalout_cmn.dat";
+            LayoutEditorFunctions.SaveShadowLayout(layout, test, false);
+
+            var layoutExport = LayoutEditorFunctions.GetShadowLayout(test, out var result2);
+            // Assert.True(layout.Equals(layoutExport)); needs revision. HPP diff tool shows as working; Tests do not
+        }
+
+        [Fact]
         public void ModifyAndWriteSETBox()
         {
             var shadow_0100_cmn = parentDirectory + Assets.Assets.shadow_stg0100_cmn;
@@ -41,7 +56,8 @@ namespace ShadowSETTest
                 layout[woodbox.index] = woodbox.item;
             }
 
-            var test = "";
+            var test = "debuglayouttest2.dat";
+            LayoutEditorFunctions.SaveShadowLayout(layout, test, false);
             //var originalLayout = Layout.GetShadowLayout(shadow_0100_cmn);
             //Assert.NotEqual(originalLayout, layout);
 

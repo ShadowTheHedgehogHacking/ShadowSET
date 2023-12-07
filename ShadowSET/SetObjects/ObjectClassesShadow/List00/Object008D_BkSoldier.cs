@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace ShadowSET
+﻿namespace ShadowSET
 {
     public class Object008D_BkSoldier : SetObjectShadow
     {

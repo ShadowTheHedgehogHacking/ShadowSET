@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using ShadowSET.Utilities;
+﻿using System.ComponentModel;
 using static ShadowSET.LayoutEditorFunctions;
-using static ShadowSET.Utilities.ReadWriteCommon;
 
 namespace ShadowSET
 {

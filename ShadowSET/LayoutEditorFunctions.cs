@@ -29,9 +29,9 @@ namespace ShadowSET
                     float PosY = reader.ReadSingle();
                     float PosZ = reader.ReadSingle();
 
-                    float RotX = reader.ReadSingle();
-                    float RotY = reader.ReadSingle();
-                    float RotZ = reader.ReadSingle();
+                    float RotX = reader.ReadInt32();
+                    float RotY = reader.ReadInt32();
+                    float RotZ = reader.ReadInt32();
 
                     var unkBytes1 = reader.ReadBytes(4);
                     reader.BaseStream.Position += 4;
@@ -259,9 +259,9 @@ namespace ShadowSET
                 writer.Write(obj.PosX);
                 writer.Write(obj.PosY);
                 writer.Write(obj.PosZ);
-                writer.Write((int)obj.RotX);
-                writer.Write((int)obj.RotY);
-                writer.Write((int)obj.RotZ);
+                writer.Write(obj.RotX);
+                writer.Write(obj.RotY);
+                writer.Write(obj.RotZ);
 
                 if (autoValues || obj.UnkBytes.Length != 8)
                 {
