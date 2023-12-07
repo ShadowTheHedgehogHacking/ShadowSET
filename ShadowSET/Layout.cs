@@ -6,7 +6,7 @@ using ShadowSET.ObjectClassesShadow;
 
 namespace ShadowSET
 {
-	static class Layout
+	public static class Layout
 	{
 		public static List<SetObjectShadow> GetShadowLayout(string fileName)
 		{
@@ -68,7 +68,66 @@ namespace ShadowSET
 			return list;
 		}
 
-		public static Dictionary<(byte, byte), ObjectEntry> ReadObjectListData(string FileName)
+        public static void SaveShadowLayout(IEnumerable<SetObjectShadow> list, string outputFile)
+        {
+            byte currentNum = 0;
+
+            if (outputFile.ToLower().Contains("cmn"))
+                currentNum = 0x10;
+            else if (outputFile.ToLower().Contains("nrm"))
+                currentNum = 0x20;
+            else if (outputFile.ToLower().Contains("hrd"))
+                currentNum = 0x40;
+            else if (outputFile.ToLower().Contains("ds1"))
+                currentNum = 0x80;
+
+            using var writer = new BinaryWriter(new FileStream(outputFile, FileMode.Create));
+            using var miscSettingsWriter = new BinaryWriter(new MemoryStream());
+
+            writer.Write(new byte[] { 0x73, 0x6B, 0x79, 0x32 });
+            writer.Write(list.Count());
+            writer.Write(0);
+
+            foreach (var obj in list)
+            {
+                var miscSettingsCount = -miscSettingsWriter.BaseStream.Position;
+                // obj.WriteMiscSettings(miscSettingsWriter);
+                miscSettingsCount += miscSettingsWriter.BaseStream.Position;
+
+                writer.Write(obj.PosX);
+                writer.Write(obj.PosX);
+                writer.Write(obj.PosX);
+                writer.Write(obj.RotX);
+                writer.Write(obj.RotY);
+                writer.Write(obj.RotZ);
+
+                if (obj.UnkBytes.Length != 8)
+                {
+                    var unkBytes = new List<byte>() { 1, currentNum };
+                    unkBytes.AddRange(currentNum == 0x80 ? new byte[] { 0x40, 0x80 } : new byte[] { 0, 0x80 });
+                    unkBytes.AddRange(new byte[] { 1, currentNum });
+                    unkBytes.AddRange(currentNum == 0x80 ? new byte[] { 0x40, 0x80 } : new byte[] { 0, 0 });
+
+                    obj.UnkBytes = unkBytes.ToArray();
+                }
+
+                writer.Write(obj.UnkBytes);
+
+                writer.Write(obj.Type);
+                writer.Write(obj.List);
+                writer.Write(obj.Link);
+                writer.Write(obj.Rend);
+                writer.Write((int)miscSettingsCount);
+                writer.Write(0);
+            }
+
+            writer.Write(((MemoryStream)miscSettingsWriter.BaseStream).ToArray());
+
+            writer.BaseStream.Position = 8;
+            writer.Write((int)miscSettingsWriter.BaseStream.Length);
+        }
+
+        public static Dictionary<(byte, byte), ObjectEntry> ReadObjectListData(string FileName)
 		{
 			var list = new Dictionary<(byte, byte), ObjectEntry>();
 

@@ -1,7 +1,4 @@
 using System.ComponentModel;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using static ShadowSET.Layout;
 
 namespace ShadowSET
@@ -22,7 +19,7 @@ namespace ShadowSET
 			// embed as INI? make end user pass as constructor?
 			//var entryPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 			//var resourcePath = Path.Combine(entryPath, "Resources/ShadowObjectList.ini");
-			var resourcePath = "Scripts/ShadowSET/ShadowSET/Resources/ShadowObjectList.ini";
+			var resourcePath = "Resources/ShadowObjectList.ini";
 			shadowObjectEntries = ReadObjectListData(resourcePath);
 		}
 

@@ -35,4 +35,36 @@ public abstract class SetObjectShadow : SetObject
 			for (int i = 0; i < 4; i++)
 				MiscSettings[j + i] = BitConverter.GetBytes(value)[i];
 		}
-	}
+
+/*    public virtual void WriteMiscSettings(BinaryWriter writer)
+    {
+        foreach (var (property, attribute) in MiscProperties)
+        {
+            var underlyingType = MiscSettingAttribute.GetUnderlyingType(property.PropertyType, attribute.UnderlyingType);
+
+            switch (underlyingType)
+            {
+                case MiscSettingUnderlyingType.Int:
+                    while (writer.BaseStream.Position % 4 != 0)
+                        writer.BaseStream.Position++;
+                    writer.Write(Convert.ToInt32(property.GetValue(this)));
+                    break;
+                case MiscSettingUnderlyingType.Float:
+                    while (writer.BaseStream.Position % 4 != 0)
+                        writer.BaseStream.Position++;
+                    writer.Write(Convert.ToSingle(property.GetValue(this)));
+                    break;
+                case MiscSettingUnderlyingType.Short:
+                    while (writer.BaseStream.Position % 2 != 0)
+                        writer.BaseStream.Position++;
+                    writer.Write(Convert.ToInt16(property.GetValue(this)));
+                    break;
+                case MiscSettingUnderlyingType.Byte:
+                    writer.Write(Convert.ToByte(property.GetValue(this)));
+                    break;
+            }
+
+            writer.BaseStream.Position += attribute.PadAfter;
+        }
+    }*/
+}
