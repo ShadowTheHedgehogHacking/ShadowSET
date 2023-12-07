@@ -8,6 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Update="Resources\Lists\HeroesObjectList.ini">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="Resources\Lists\HeroesObjectListCustom.ini">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="Resources\Lists\ShadowObjectList.ini">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
       <None Update="Resources\ShadowObjectList.ini">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
