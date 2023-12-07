@@ -19,7 +19,7 @@ namespace ShadowSET
         public float float_07
         {
             get => BitConverter.ToSingle(BitConverter.GetBytes(int_07), 0);
-            set => int_07 = BitConverter.ToInt32(BitConverter.GetBytes(value));
+            set => int_07 = BitConverter.ToInt32(BitConverter.GetBytes(value), 0);
         }
 
         public int int_08 { get; set; }
@@ -33,7 +33,7 @@ namespace ShadowSET
         public float float_09
         {
             get => BitConverter.ToSingle(BitConverter.GetBytes((int)TriggerLinkBehavior), 0);
-            set => TriggerLinkBehavior = (ETriggerLinkBehavior)BitConverter.ToInt32(BitConverter.GetBytes(value));
+            set => TriggerLinkBehavior = (ETriggerLinkBehavior)BitConverter.ToInt32(BitConverter.GetBytes(value), 0);
         }
 
         public override void ReadMiscSettings(BinaryReader reader, int count)

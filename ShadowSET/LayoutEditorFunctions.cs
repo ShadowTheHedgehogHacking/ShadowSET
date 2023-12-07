@@ -367,7 +367,7 @@ namespace ShadowSET
                 {
                     if (s.Length == 9 * 9 + 4)
                     {
-                        string newMiscString = Regex.Replace(s[5..], @"\s+", "");
+                        string newMiscString = Regex.Replace(s.Substring(5), @"\s+", "");
                         var miscSettings = new List<byte>();
                         for (int j = 0; j < newMiscString.Length; j += 2)
                         {

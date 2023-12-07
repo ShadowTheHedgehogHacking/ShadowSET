@@ -23,7 +23,7 @@ namespace ShadowSET
         public float Unknown_float0
         {
             get => BitConverter.ToSingle(BitConverter.GetBytes(Unknown_int0), 0);
-            set => Unknown_int0 = BitConverter.ToInt32(BitConverter.GetBytes(value));
+            set => Unknown_int0 = BitConverter.ToInt32(BitConverter.GetBytes(value), 0);
         }
 
         [MiscSetting(1), Description("Force the chunk(s) On or Off while in Radius.\n Ignores Visibility constraints")]
