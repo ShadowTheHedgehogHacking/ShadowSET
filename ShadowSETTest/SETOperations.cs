@@ -1,5 +1,5 @@
 using ShadowSET;
-using ShadowSET.ObjectClassesShadow;
+
 namespace ShadowSETTest
 {
     public class SETOperations
@@ -9,13 +9,10 @@ namespace ShadowSETTest
         [Fact]
         public void ReadSET()
         {
-/*            var shadow_0100_cmn = parentDirectory + Assets.Assets.shadow_stg0100_cmn;
-            //var layout = new LayoutEditorSystem(shadow_0100_cmn);
-            //LayoutEditorSystem.SetupLayoutEditorSystem();
-            //var entries = layout.GetAllCurrentObjectEntries();
-
-            var layout = Layout.GetShadowLayout(shadow_0100_cmn);
-            Assert.Equal(504, layout.Count());*/
+            var shadow_0100_cmn = parentDirectory + Assets.Assets.shadow_stg0100_cmn;
+            LayoutEditorSystem.SetupLayoutEditorSystem();
+            var layout = LayoutEditorFunctions.GetShadowLayout(shadow_0100_cmn, out var result);
+            Assert.Equal(504, layout.Count());
         }
 
         [Fact]
@@ -26,7 +23,8 @@ namespace ShadowSETTest
             //LayoutEditorSystem.SetupLayoutEditorSystem();
             //var entries = layout.GetAllCurrentObjectEntries();
 
-            var layout = Layout.GetShadowLayout(shadow_0100_cmn);
+            LayoutEditorSystem.SetupLayoutEditorSystem();
+            var layout = LayoutEditorFunctions.GetShadowLayout(shadow_0100_cmn, out var result);
             Assert.Equal(504, layout.Count());
 
             // Use LINQ to find indices of elements of type WoodBox
@@ -38,8 +36,8 @@ namespace ShadowSETTest
 
             foreach (var woodbox in woodBoxItems)
             {
-                woodbox.item.ItemType = BoxItem.Weapon;
-                woodbox.item.ModifierWeapon = Weapon.LaserRifle;
+                woodbox.item.BoxItem = EBoxItem.Weapon;
+                woodbox.item.ModifierWeapon = EWeapon.LaserRifle;
                 layout[woodbox.index] = woodbox.item;
             }
 

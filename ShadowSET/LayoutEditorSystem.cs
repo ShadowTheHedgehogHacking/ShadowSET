@@ -28,10 +28,10 @@ namespace ShadowSET
 
         public static void SetupLayoutEditorSystem()
         {
-            heroesObjectEntries = ReadObjectListData("/Resources/Lists/HeroesObjectList.ini");
-            shadowObjectEntries = ReadObjectListData("/Resources/Lists/ShadowObjectList.ini");
+            heroesObjectEntries = ReadObjectListData("Resources/Lists/HeroesObjectList.ini");
+            shadowObjectEntries = ReadObjectListData("Resources/Lists/ShadowObjectList.ini");
 
-            string extraObjectEntriesPath = "/Resources/Lists/HeroesObjectListCustom.ini";
+            string extraObjectEntriesPath = "Resources/Lists/HeroesObjectListCustom.ini";
             if (File.Exists(extraObjectEntriesPath))
             {
                 var dict = ReadObjectListData(extraObjectEntriesPath);
