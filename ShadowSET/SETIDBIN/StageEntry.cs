@@ -1,4 +1,4 @@
-﻿namespace HeroesPowerPlant.SetIdTableEditor
+﻿namespace ShadowSET.SETIDBIN
 {
     public class StageEntry
     {

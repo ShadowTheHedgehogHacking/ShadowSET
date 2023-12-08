@@ -8,13 +8,23 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Reloaded.Memory" Version="9.3.2" />
+    </ItemGroup>
+
+    <ItemGroup>
       <None Update="Resources\Lists\HeroesObjectList.ini">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="Resources\Lists\HeroesObjectListCustom.ini">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="Resources\Lists\HeroesStageList.ini">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
       <None Update="Resources\Lists\ShadowObjectList.ini">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="Resources\Lists\ShadowStageList.ini">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="Resources\ShadowObjectList.ini">

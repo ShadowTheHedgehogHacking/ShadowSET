@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using ShadowSET.SETIDBIN;
+using System.ComponentModel;
 using static ShadowSET.LayoutEditorFunctions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ShadowSET
 {
@@ -16,6 +18,9 @@ namespace ShadowSET
         public static ObjectEntry heroesObjectEntry(byte List, byte Type) => heroesObjectEntries[(List, Type)];
         public static ObjectEntry shadowObjectEntry(byte List, byte Type) => shadowObjectEntries[(List, Type)];
 
+        public static StageEntry[] heroesStageEntries;
+        public static StageEntry[] shadowStageEntries;
+
         public bool autoUnkBytes;
 
         public bool UnsavedChanges = false;
@@ -24,14 +29,17 @@ namespace ShadowSET
         {
             heroesObjectEntries = ReadObjectListData("Resources/Lists/HeroesObjectList.ini");
             shadowObjectEntries = ReadObjectListData("Resources/Lists/ShadowObjectList.ini");
+            heroesStageEntries = SetIdTableFunctions.ReadStageListData("Resources/Lists/HeroesStageList.ini");
+            shadowStageEntries = SetIdTableFunctions.ReadStageListData("Resources/Lists/ShadowStageList.ini");
 
-            string extraObjectEntriesPath = "Resources/Lists/HeroesObjectListCustom.ini";
+
+/*            string extraObjectEntriesPath = "Resources/Lists/HeroesObjectListCustom.ini";
             if (File.Exists(extraObjectEntriesPath))
             {
                 var dict = ReadObjectListData(extraObjectEntriesPath);
                 foreach (var k in dict.Keys)
                     heroesObjectEntries.Add(k, dict[k]);
-            }
+            }*/
         }
 
 /*        public void BindControl(ListControl listControl)

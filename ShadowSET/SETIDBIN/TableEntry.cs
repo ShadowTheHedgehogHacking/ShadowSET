@@ -1,6 +1,4 @@
-﻿using HeroesPowerPlant.LayoutEditor;
-
-namespace HeroesPowerPlant.SetIdTableEditor
+﻿namespace ShadowSET.SETIDBIN
 {
     public class TableEntry
     {

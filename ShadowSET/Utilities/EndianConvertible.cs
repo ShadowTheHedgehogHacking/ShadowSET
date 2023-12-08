@@ -1,4 +1,6 @@
-﻿namespace ShadowSET.Utilities
+﻿using Reloaded.Memory.Utilities;
+
+namespace ShadowSET.Utilities
 {
     public enum Endianness
     {
@@ -126,6 +128,19 @@
                 throw new ArgumentException("Magic word must have 4 characters");
             var chars = magic.ToCharArray();
             Write(endianness == Endianness.Little ? chars : chars.Reverse().ToArray());
+        }
+    }
+
+    /// <summary>
+    /// Provides a set of methods to manually convert the endian of each primitive type.
+    /// </summary>
+    public static class ManualEndianConverter
+    {
+
+        // TODO: Debloat - Replace Reloaded.Memory in the future
+        public static T ReverseEndian<T>(this T type) where T : unmanaged
+        {
+            return Endian.Reverse(type);
         }
     }
 }

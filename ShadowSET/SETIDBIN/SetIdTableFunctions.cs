@@ -1,10 +1,6 @@
-﻿using HeroesPowerPlant.LayoutEditor;
-using HeroesPowerPlant.Shared.Utilities;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using ShadowSET.Utilities;
 
-namespace SixthSETID
+namespace ShadowSET.SETIDBIN
 {
     public static class SetIdTableFunctions
     {
